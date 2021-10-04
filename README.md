@@ -1,1 +1,1 @@
-# StyleGAN3-detection
+# GAN-image-detection
