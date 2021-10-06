@@ -17,6 +17,8 @@ from utils import architectures
 from utils.python_patch_extractor.PatchExtractor import PatchExtractor
 from PIL import Image
 
+import argparse
+
 
 class Detector:
     def __init__(self):
@@ -29,11 +31,11 @@ class Detector:
         self.device = torch.device('cuda:0') if torch.cuda.is_available() else torch.device('cpu')
 
         self.nets = []
-        for i in range(5):
+        for i, l in enumerate('ABCDE'):
             # Instantiate and load network
             network_class = getattr(architectures, 'EfficientNetB4')
             net = network_class(n_classes=2, pretrained=False).eval().to(self.device)
-            print('Loading model...')
+            print(f'Loading model {l}...')
             state_tmp = torch.load(self.weights_path_list[i], map_location='cpu')
 
             if 'net' not in state_tmp.keys():
@@ -75,6 +77,7 @@ class Detector:
             print('Omitting alpha channel')
             img = img[:, :, :3]
 
+        print('Computing scores...')
         img_net_scores = []
         for net_idx, net in enumerate(self.nets):
 
@@ -113,8 +116,14 @@ class Detector:
 
 
 def main():
+
+    parser = argparse.ArgumentParser()
+    parser.add_argument('--img_path', help='Pat to the test image', required=True)
+    args = parser.parse_args()
+
+    img_path = args.img_path
     # debug img_path on fermi:
-    img_path = '/home/nbonettini/nvidia_temp/nvidia-alias-free-gan/faces/alias-free-r-afhqv2-512x512/seed40000.png'
+    # img_path = '/home/nbonettini/nvidia_temp/nvidia-alias-free-gan/faces/alias-free-r-afhqv2-512x512/seed40000.png'
 
     detector = Detector()
     score = detector.synth_real_detector(img_path)
