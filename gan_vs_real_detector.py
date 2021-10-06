@@ -107,7 +107,6 @@ class Detector:
             img_net_scores.append(np.nanmax(scores_maj_voting) if maj_voting == 1 else -np.nanmax(scores_maj_voting))
 
         # final score is the average among the 5 scores returned by the detectors
-        print(img_net_scores)
         img_score = np.mean(img_net_scores)
 
         return img_score
