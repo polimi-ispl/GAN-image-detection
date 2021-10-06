@@ -5,6 +5,9 @@ import numpy as np
 import torch
 
 torch.manual_seed(21)
+import random
+
+random.seed(21)
 import torch.multiprocessing
 
 torch.multiprocessing.set_sharing_strategy('file_system')
@@ -18,7 +21,9 @@ from PIL import Image
 class Detector:
     def __init__(self):
 
-        self.weights_path_list = [os.path.join('/nas/home/nbonettini/projects/StyleGAN3-detection/weights', f'method_{x}.pth') for x in 'ABCDE']
+        # You need to download the weight.zip file from here https://www.dropbox.com/s/g1z2u8wl6srjh6v/weigths.zip?dl=0
+        # and uncompress it into the main folder.
+        self.weights_path_list = [os.path.join('weights', f'method_{x}.pth') for x in 'ABCDE']
 
         # GPU configuration if available
         self.device = torch.device('cuda:0') if torch.cuda.is_available() else torch.device('cpu')
@@ -30,6 +35,7 @@ class Detector:
             net = network_class(n_classes=2, pretrained=False).eval().to(self.device)
             print('Loading model...')
             state_tmp = torch.load(self.weights_path_list[i], map_location='cpu')
+
             if 'net' not in state_tmp.keys():
                 state = OrderedDict({'net': OrderedDict()})
                 [state['net'].update({'model.{}'.format(k): v}) for k, v in state_tmp.items()]
@@ -37,7 +43,7 @@ class Detector:
                 state = state_tmp
             incomp_keys = net.load_state_dict(state['net'], strict=True)
             print(incomp_keys)
-            print('Model loaded!')
+            print('Model loaded!\n')
 
             self.nets += [net]
 
@@ -85,7 +91,7 @@ class Detector:
                 stride_1 = (((img.shape[1] - 128) // 10 + 7) // 8) * 8
                 pe = PatchExtractor(dim=(128, 128, 3), stride=(stride_0, stride_1, 3))
                 patches = pe.extract(img)
-                patch_list = list(patches.reshape((patches.shape[0]*patches.shape[1], 128, 128, 3)))
+                patch_list = list(patches.reshape((patches.shape[0] * patches.shape[1], 128, 128, 3)))
 
             # Normalization
             transf_patch_list = [self.trans(image=patch)['image'] for patch in patch_list]
@@ -101,14 +107,14 @@ class Detector:
             img_net_scores.append(np.nanmax(scores_maj_voting) if maj_voting == 1 else -np.nanmax(scores_maj_voting))
 
         # final score is the average among the 5 scores returned by the detectors
+        print(img_net_scores)
         img_score = np.mean(img_net_scores)
 
         return img_score
 
 
 def main():
-
-    # img_path on fermi:
+    # debug img_path on fermi:
     img_path = '/home/nbonettini/nvidia_temp/nvidia-alias-free-gan/faces/alias-free-r-afhqv2-512x512/seed40000.png'
 
     detector = Detector()
