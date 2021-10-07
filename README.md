@@ -18,4 +18,4 @@ python gan_vs_real_detector.py --img_path $PATH_TO_TEST_IMAGE
 ```
 
 ## Performances
-We provide a [notebook](https://github.com/polimi-ispl/GAN-image-detection/roc_curves.ipynb) with the script for computing the ROC curve for each dataset.
+We provide a [notebook](https://github.com/polimi-ispl/GAN-image-detection/blob/main/roc_curves.ipynb) with the script for computing the ROC curve for each dataset.
