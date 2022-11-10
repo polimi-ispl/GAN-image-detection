@@ -31,19 +31,26 @@ We provide a [notebook](https://github.com/polimi-ispl/GAN-image-detection/blob/
 ## How to cite
 
 The proposed method has been presented in this [paper](https://arxiv.org/pdf/2203.02246.pdf):
-
-Plaintext:
 ```
 S. Mandelli, N. Bonettini, P. Bestagini, S. Tubaro, "Detecting Gan-Generated Images by Orthogonal Training of Multiple CNNs", IEEE International Conference on Image Processing (ICIP), 2022, doi: 10.1109/ICIP46576.2022.9897310.
 ```
-Training procedures have been carried out following the suggestions presented in the following paper.
-
-Plaintext:
+Training procedures have been carried out following the suggestions presented in the following paper:
 ```
 S. Mandelli, N. Bonettini, P. Bestagini, S. Tubaro, "Training CNNs in Presence of JPEG Compression: Multimedia Forensics vs Computer Vision", IEEE International Workshop on Information Forensics and Security (WIFS), 2020, doi: 10.1109/WIFS49906.2020.9360903.
 ```
 
 Bibtex:
+```bibtex
+@INPROCEEDINGS{9897310,
+  author={Mandelli, Sara and Bonettini, Nicolò and Bestagini, Paolo and Tubaro, Stefano},
+  booktitle={2022 IEEE International Conference on Image Processing (ICIP)}, 
+  title={Detecting Gan-Generated Images by Orthogonal Training of Multiple CNNs}, 
+  year={2022},
+  volume={},
+  number={},
+  pages={3091-3095},
+  doi={10.1109/ICIP46576.2022.9897310}}
+```
 ```bibtex
 @INPROCEEDINGS{mandelli2020training,
   author={Mandelli, Sara and Bonettini, Nicolò and Bestagini, Paolo and Tubaro, Stefano},
