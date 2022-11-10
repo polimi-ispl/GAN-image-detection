@@ -41,7 +41,7 @@ S. Mandelli, N. Bonettini, P. Bestagini, S. Tubaro, "Training CNNs in Presence o
 
 Bibtex:
 ```bibtex
-@INPROCEEDINGS{9897310,
+@INPROCEEDINGS{mandelli2022detecting,
   author={Mandelli, Sara and Bonettini, Nicolò and Bestagini, Paolo and Tubaro, Stefano},
   booktitle={2022 IEEE International Conference on Image Processing (ICIP)}, 
   title={Detecting Gan-Generated Images by Orthogonal Training of Multiple CNNs}, 
