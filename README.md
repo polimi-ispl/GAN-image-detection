@@ -1,6 +1,6 @@
 # GAN-image-detection
 This repository contains a GAN-generated image detector developed to distinguish real images from synthetic ones.
-
+The complete description of the methodology is available [here](https://arxiv.org/pdf/2203.02246.pdf).
 The detector is based on an ensemble of CNNs.
 The backbone of each CNN is the EfficientNet-B4.
 Each model of the ensemble has been trained in a different way following the suggestions presented in [this paper](https://ieeexplore.ieee.org/abstract/document/9360903) in order to increase the detector robustness to compression and resizing.
@@ -50,8 +50,7 @@ Bibtex:
   number={},
   pages={3091-3095},
   doi={10.1109/ICIP46576.2022.9897310}}
-```
-```bibtex
+
 @INPROCEEDINGS{mandelli2020training,
   author={Mandelli, Sara and Bonettini, Nicolò and Bestagini, Paolo and Tubaro, Stefano},
   booktitle={IEEE International Workshop on Information Forensics and Security (WIFS)}, 
