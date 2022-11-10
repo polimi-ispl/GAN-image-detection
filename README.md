@@ -29,6 +29,13 @@ python gan_vs_real_detector.py --img_path $PATH_TO_TEST_IMAGE
 We provide a [notebook](https://github.com/polimi-ispl/GAN-image-detection/blob/main/roc_curves.ipynb) with the script for computing the ROC curve for each dataset.
 
 ## How to cite
+
+The proposed method has been presented in this [paper](https://arxiv.org/pdf/2203.02246.pdf):
+
+Plaintext:
+```
+S. Mandelli, N. Bonettini, P. Bestagini, S. Tubaro, "Detecting Gan-Generated Images by Orthogonal Training of Multiple CNNs", IEEE International Conference on Image Processing (ICIP), 2022, doi: 10.1109/ICIP46576.2022.9897310.
+```
 Training procedures have been carried out following the suggestions presented in the following paper.
 
 Plaintext:
