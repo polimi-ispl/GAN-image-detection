@@ -13,9 +13,9 @@ Each model of the ensemble has been trained in a different way following the sug
 conda env create -f environment.yml
 conda activate gan-image-detection
 ```
-2. Download the model's weights from [this link](https://www.dropbox.com/s/g1z2u8wl6srjh6v/weigths.zip) and unzip the file under the main folder
+2. Download the model's weights from [this link](https://www.dropbox.com/s/n1boisish8m6aoj/weights.zip?dl=0) and unzip the file under the main folder
 ```bash
-wget https://www.dropbox.com/s/g1z2u8wl6srjh6v/weigths.zip
+wget https://www.dropbox.com/s/n1boisish8m6aoj/weights.zip?dl=0
 unzip weigths.zip
 ```
 
